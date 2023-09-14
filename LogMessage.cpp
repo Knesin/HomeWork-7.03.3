@@ -1,6 +1,6 @@
 #include "LogMessage.h"
 
-LogMessage::LogMessage(Type type, std::string message) :type_(type), message_(message) {};
+LogMessage::LogMessage(const Type type, const std::string& message) :type_(type), message_(message) {};
 
 Type LogMessage::type() const {
 	return type_;

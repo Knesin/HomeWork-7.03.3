@@ -20,39 +20,19 @@ class LogFatalErrorHandler : public LogHandler {
 public:
 	using LogHandler::LogHandler;
 private:
-	bool handleLog(const LogMessage& msg) override {
-		if (msg.type() != Type::FatalError) {
-			return false;
-		}
-		throw std::runtime_error(msg.message());
-		return true;
-	}
+	bool handleLog(const LogMessage& msg) override;
 };
 
 class LogErrorHandler : public LogHandler {
 public:
 	using LogHandler::LogHandler;
 private:
-	bool handleLog(const LogMessage& msg) override {
-		if (msg.type() != Type::Error) {
-			return false;
-		}
-		std::ofstream f("Log.txt", std::ios::app);
-		f << "Error: " << msg.message() << std::endl;
-		f.close();
-		return true;
-	}
+	bool handleLog(const LogMessage& msg) override;
 };
 
 class LogWarningHandler : public LogHandler {
 public:
 	using LogHandler::LogHandler;
 private:
-	bool handleLog(const LogMessage& msg) override {
-		if (msg.type() != Type::Warning) {
-			return false;
-		}
-		std::cout << "Warning: " << msg.message() << std::endl;
-		return true;
-	}
+	bool handleLog(const LogMessage& msg) override;
 };

@@ -5,7 +5,7 @@ enum Type{ Warning, Error, FatalError, Unknown};
 
 class LogMessage {
 public:
-    LogMessage(Type type, std::string message);
+    LogMessage(const Type type, const std::string& message);
     Type type() const;
     const std::string& message() const;
 private:
